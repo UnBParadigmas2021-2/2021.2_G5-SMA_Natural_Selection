@@ -1,51 +1,24 @@
-# RepositorioTemplate
-Esse repositório é para ser utilizado pelos grupos como um template inicial, da home page do Projeto.
-
-**!! *Atenção: Renomeie o seu repositório para (Ano.Semestre)_(Grupo)_(Paradigma)_(NomeDoProjeto)*. !!** 
-
-Paradigmas:
- - Funcional
- - Logico
- - SMA
-
-**!! *Não coloque os nomes dos alunos no título do repositório*. !!**
-
-**!! *Exemplo de título correto: 2021.2_G1_Logico_ProjetoRoteirosAereos*. !!**
- 
- (Apague essa seção)
-
-# NomeDoProjeto
+# Natural Selection
 
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
-**Nro do Grupo**: XX<br>
-**Paradigma**: XXXXXXXXXX<br>
+**Nro do Grupo**: G5<br>
+**Paradigma**: SMA<br>
 
 ## Alunos
-|Matrícula | Aluno |
-| -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+|Matrícula|Aluno                                   |
+|---------|----------------------------------------|
+|18/0011961|Aline Helena Lermen                     |
+|17/0006328|Ariel Vieira Lima Serafim               |
+|19/0056843|Carlos Eduardo de Sousa Fiuza           |
+|17/0139981|Danillo Gonçalves de Souza              |
+|17/0010341|Gabriel Davi Silva Pereira              |
+|18/0122606|Isadora da Cruz Galvão dos Santos Soares|
+|17/0069800|Ithalo Luiz de Azevedo Mendes           |
+|17/0145514|Iuri de Souza Severo Alves              |
+|17/0164411|Victor Amaral Cerqueira                 |
 
 ## Sobre 
-Descreva o seu projeto em linhas gerais. 
+Esse projeto simula um sistema de selecao natural. Tivemos como base esse projeto [aqui](https://www.youtube.com/watch?v=0ZGbIKd0XrM&t=9s&ab_channel=Primer). O programa foi desenvolvido em python utilizando o framework MESA.  
+Nas próximas seções é explicado como executar o programa, além de apresentar um vídeo com explicações mais detalhadas sobre o projeto
 
 ## Screenshots
-Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
-
-## Instalação 
-**Linguagens**: xxxxxx<br>
-**Tecnologias**: xxxxxx<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
-Insira um manual ou um script para auxiliar ainda mais.
-
-## Uso 
-Explique como usar seu projeto, caso haja algum passo a passo após o comando de execução.
-
-## Vídeo
-Adicione 1 ou mais vídeos com a execução do projeto.
-
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas a seguir.
-
-## Fontes
-Caso utilize materiais de terceiros, referencie-os adequadamente.
