@@ -1,7 +1,8 @@
 from mesa import Model
-from agent import FoodAgent
+from .agent import FoodAgent
 from mesa.time import RandomActivation
 from mesa.space import MultiGrid
+
 
 class FoodModel(Model):
     """Uma model com um numero definido de agentes"""
@@ -17,7 +18,7 @@ class FoodModel(Model):
             self.schedule.add(a)
             self.running = True
 
-            #Adiciona agentes no mapa
+            # Adiciona agentes no mapa
             x = self.random.randrange(self.grid.width)
             y = self.random.randrange(self.grid.height)
             self.grid.place_agent(a, (x, y))
