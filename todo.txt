@@ -1,0 +1,2 @@
+-->Criar função de comer.
+-->Implementar energia.

@@ -23,5 +23,5 @@ def agent_portrayal(agent):
 grid = CanvasGrid(agent_portrayal, 10, 10, 500, 500)
 server = ModularServer(FoodSpecieModel, [grid], "Natural Selection", {
                        "N": 5, "width": 10, "height": 10})
-server.port = 8081
+server.port = 8089
 server.launch()
