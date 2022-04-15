@@ -1,8 +1,8 @@
 from mesa.visualization.modules import CanvasGrid
 from mesa.visualization.ModularVisualization import ModularServer
-from src.Food.FoodAgent import FoodAgent
+from src.FoodAgent import FoodAgent
 
-from src.Food.FoodSpecieModel import FoodSpecieModel
+from src.FoodSpecieModel import FoodSpecieModel
 
 
 def agent_portrayal(agent):
