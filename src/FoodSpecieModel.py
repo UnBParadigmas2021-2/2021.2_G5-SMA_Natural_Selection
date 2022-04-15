@@ -1,8 +1,8 @@
 from mesa.time import RandomActivation
 from mesa.space import MultiGrid
 from mesa import Model
-from src.Specie.SpecieAgent import SpecieAgent
-from src.Food.FoodAgent import FoodAgent
+from src.SpecieAgent import SpecieAgent
+from src.FoodAgent import FoodAgent
 
 
 class FoodSpecieModel(Model):

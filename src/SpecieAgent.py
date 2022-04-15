@@ -1,6 +1,6 @@
 from pyexpat import model
 from mesa import Agent
-from src.Food.FoodAgent import FoodAgent
+from src.FoodAgent import FoodAgent
 
 
 class SpecieAgent(Agent):
