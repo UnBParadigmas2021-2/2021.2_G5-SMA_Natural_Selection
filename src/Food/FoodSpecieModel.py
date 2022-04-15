@@ -1,8 +1,7 @@
 from mesa.time import RandomActivation
 from mesa.space import MultiGrid
 from mesa import Model
-from src.Specie.AbstractSpecieAgent import SpecieAgent
-
+from src.Specie.SpecieAgent import SpecieAgent
 from src.Food.FoodAgent import FoodAgent
 
 
@@ -13,26 +12,22 @@ class FoodSpecieModel(Model):
         self.schedule = RandomActivation(self)
         self.running = True
         for i in range(self.num_agents):
-            a = FoodAgent(i, self)
-            self.schedule.add(a)
-            random_x = self.random.randrange(self.grid.width)
-            random_y = self.random.randrange(self.grid.height)
-            x = self.replace_edgy_pos(random_x, self.grid.width)
-            y = self.replace_edgy_pos(random_y, self.grid.width)
-            self.grid.place_agent(a, (x, y))
-        
-        random_x = 0
-        random_y = 0
-        for i in range(self.num_agents):
-            a = SpecieAgent(i+self.num_agents, self)
-            self.schedule.add(a)
-            random_x = self.random.randrange(self.grid.width)
-            random_y = self.random.randrange(self.grid.height)
-            # x = self.place_in_border()
-            x = self.replace_edgy_pos(random_x, self.grid.width)
-            y = self.replace_edgy_pos(random_y, self.grid.width)
-            self.grid.place_agent(a, (x, y))
+            self.init_agent(i, FoodAgent)
+            self.init_agent(i+self.num_agents, SpecieAgent)
 
+    def init_agent(self, index, Agent):
+        agent = Agent(index, self)
+        self.schedule.add(agent)
+        position = self.get_random_position(Agent)
+        self.grid.place_agent(agent, position)
+
+    def get_random_position(self, Agent):
+        x = self.random.randrange(self.grid.width)
+        y = self.random.randrange(self.grid.height)
+        if type(Agent) is FoodAgent:
+            x = self.replace_edgy_pos(x, self.grid.width)
+            y = self.replace_edgy_pos(y, self.grid.width)
+        return (x, y)
 
     def replace_edgy_pos(self, pos, axis_limit):
         if pos == 0:

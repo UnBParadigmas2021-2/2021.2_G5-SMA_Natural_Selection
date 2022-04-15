@@ -16,12 +16,12 @@ def agent_portrayal(agent):
     else:
         portrayal["Color"] = "blue"
         portrayal["Layer"] = 1
-        portrayal["r"] = 0.2
+        portrayal["r"] = 0.5
     return portrayal
 
 
 grid = CanvasGrid(agent_portrayal, 10, 10, 500, 500)
 server = ModularServer(FoodSpecieModel, [grid], "Natural Selection", {
-                       "N": 5, "width": 10, "height": 10})
+                       "N": 10, "width": 10, "height": 10})
 server.port = 8089
 server.launch()
