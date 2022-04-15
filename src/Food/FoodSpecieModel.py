@@ -1,3 +1,4 @@
+import uuid
 from mesa.time import RandomActivation
 from mesa.space import MultiGrid
 from mesa import Model
@@ -11,30 +12,27 @@ class FoodSpecieModel(Model):
         self.grid = MultiGrid(width, height, True)
         self.schedule = RandomActivation(self)
         self.running = True
+        self.steps = 0
         for i in range(self.num_agents):
-            self.init_agent(i, FoodAgent)
-            self.init_agent(i+self.num_agents, SpecieAgent)
+            self.init_agent(FoodAgent)
+            self.init_agent(SpecieAgent)
 
-    def init_agent(self, index, Agent):
-        agent = Agent(index, self)
+    def init_agent(self, Agent):
+        id = uuid.uuid1()
+        agent = Agent(id, self)
         self.schedule.add(agent)
-        position = self.get_random_position(Agent)
-        self.grid.place_agent(agent, position)
-
-    def get_random_position(self, Agent):
-        x = self.random.randrange(self.grid.width)
-        y = self.random.randrange(self.grid.height)
-        if type(Agent) is FoodAgent:
-            x = self.replace_edgy_pos(x, self.grid.width)
-            y = self.replace_edgy_pos(y, self.grid.width)
-        return (x, y)
-
-    def replace_edgy_pos(self, pos, axis_limit):
-        if pos == 0:
-            return 1
-        if axis_limit-1 == pos:
-            return pos - 1
-        return pos
+        if self.grid.exists_empty_cells():
+            self.grid.place_agent(agent, self.grid.find_empty())
 
     def step(self):
+        if self.steps == 10:
+            self.reset_steps()
+        else:
+            self.steps += 1
+
         self.schedule.step()
+
+    def reset_steps(self):
+        self.steps = 0
+        for i in range(self.num_agents):
+            self.init_agent(FoodAgent)
