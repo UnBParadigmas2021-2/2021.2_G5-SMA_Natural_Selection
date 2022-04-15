@@ -34,5 +34,5 @@ class FoodSpecieModel(Model):
 
     def reset_steps(self):
         self.steps = 0
-        for i in range(self.num_agents):
+        for i in range(self.num_agents*2):
             self.init_agent(FoodAgent)

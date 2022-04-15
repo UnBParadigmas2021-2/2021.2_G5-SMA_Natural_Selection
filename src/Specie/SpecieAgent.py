@@ -1,6 +1,5 @@
 from pyexpat import model
 from mesa import Agent
-from src.Food.FoodAgent import FoodAgent
 
 
 class SpecieAgent(Agent):
@@ -10,6 +9,7 @@ class SpecieAgent(Agent):
     radius = None  # visão do personagem
     walk_radius = None  # quadrados andados por passo('velocidade')
     energy_loss = None  # perda de energia por passo
+    food = None
 
     def __init__(self, unique_id, model, energy=20, moore=True, radius=3, walk_radius=1, energy_loss=1):
         super().__init__(unique_id, model)
@@ -19,6 +19,7 @@ class SpecieAgent(Agent):
         self.radius = radius
         self.walk_radius = walk_radius
         self.energy_loss = energy_loss
+        self.food = 0
 
     def step(self):
         self.energy -= self.energy_loss
@@ -39,9 +40,7 @@ class SpecieAgent(Agent):
         step_x = 0
         step_y = 0
         for walk_pos in possible_walk_pos:
-            this_cell = self.model.grid.get_cell_list_contents([walk_pos])
-            food = [obj for obj in this_cell if isinstance(obj, FoodAgent)]
-
+            food = self.get_food_agent(walk_pos)
             if len(food) > 0:
                 current_distance = (
                     current_pos[0] - walk_pos[0])**2 + (current_pos[1] - walk_pos[1])**2
@@ -67,6 +66,13 @@ class SpecieAgent(Agent):
         next_pos = self.model.grid.get_neighborhood(
             self.pos, moore=self.moore, include_center=False, radius=self.walk_radius)
         return self.random.choice(next_pos)
+
+    def get_food_agent(self, pos):
+        try:
+            this_cell = self.model.grid.get_cell_list_contents([pos])
+            return [obj for obj in this_cell if not isinstance(obj, SpecieAgent)]
+        except:
+            return []
 
     def check_got_food(self):
         # a = SpecieAgent(self.model.next_id(), self.model)
