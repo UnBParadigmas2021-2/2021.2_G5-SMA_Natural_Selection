@@ -4,7 +4,8 @@ from mesa.space import MultiGrid
 from mesa import Model
 from src.SpecieAgent import SpecieAgent
 from src.FoodAgent import FoodAgent
-
+from src.FastSpecieAgent import FastSpecieAgent
+from src.CannibalSpecieAgent import CannibalSpecieAgent
 
 class FoodSpecieModel(Model):
     def __init__(self, N, width, height):
@@ -16,6 +17,8 @@ class FoodSpecieModel(Model):
         for i in range(self.num_agents):
             self.init_agent(FoodAgent)
             self.init_agent(SpecieAgent)
+            self.init_agent(FastSpecieAgent)
+            self.init_agent(CannibalSpecieAgent)
 
     def init_agent(self, Agent):
         id = uuid.uuid1()

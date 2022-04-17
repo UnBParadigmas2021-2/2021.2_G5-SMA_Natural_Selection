@@ -1,7 +1,7 @@
 from mesa import Agent
 
-
 class SpecieAgent(Agent):
+    breed = None # raça do specie
     energy = None  # personagem morre quando chega a 0
     grid = None  # matrix com o tabuleiro
     moore = None  # para função de andar
@@ -10,9 +10,9 @@ class SpecieAgent(Agent):
     energy_loss = None  # perda de energia por passo
     food = None
 
-    def __init__(self, unique_id, model, energy=20, moore=True, radius=3, walk_radius=1, energy_loss=1):
+    def __init__(self, unique_id, model, breed="Normal", energy=20, moore=True, radius=3, walk_radius=1, energy_loss=1):
         super().__init__(unique_id, model)
-        self.specie = 1
+        self.breed = breed
         self.energy = energy
         self.moore = moore
         self.radius = radius
@@ -34,7 +34,7 @@ class SpecieAgent(Agent):
             self.pos, moore=self.moore, include_center=True, radius=self.radius)
         new_position = self.get_new_position(possible_walk_pos, self.pos)
         self.model.grid.move_agent(self, new_position)
-        print("Procurar comida")
+        print(format(self.breed), "Procurar comida")
 
     def get_new_position(self, possible_walk_pos, current_pos):
         next_pos = None
@@ -80,7 +80,14 @@ class SpecieAgent(Agent):
     def check_got_food(self, min_to_reproduce):
         if self.model.steps + 1 == 10:
             if self.food >= min_to_reproduce:
-                self.model.init_agent(SpecieAgent)
+                if self.breed == 'Normal':
+                    self.model.init_agent(SpecieAgent)
+                elif self.breed == 'Fast':
+                    from src.FastSpecieAgent import FastSpecieAgent
+                    self.model.init_agent(FastSpecieAgent)
+                else:
+                    from src.CannibalSpecieAgent import CannibalSpecieAgent
+                    self.model.init_agent(CannibalSpecieAgent)
                 self.food = 0
             if self.food == 0:
                 self.energy = 0
