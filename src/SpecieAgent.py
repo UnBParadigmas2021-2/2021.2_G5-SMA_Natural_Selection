@@ -1,4 +1,3 @@
-from pyexpat import model
 from mesa import Agent
 
 
@@ -22,9 +21,13 @@ class SpecieAgent(Agent):
         self.food = 0
 
     def step(self):
-        self.energy -= self.energy_loss
-        self.walk_search_food()
-        self.check_got_food()
+        try:
+            self.energy -= self.energy_loss
+            self.walk_search_food()
+            self.check_got_food(2)
+            self.check_got_energy()
+        except:
+            pass
 
     def walk_search_food(self):
         possible_walk_pos = self.model.grid.get_neighborhood(
@@ -74,8 +77,14 @@ class SpecieAgent(Agent):
         except:
             return []
 
-    def check_got_food(self):
-        # a = SpecieAgent(self.model.next_id(), self.model)
-        # self.model.schedule.add()
-        print("Se achou food, aumentar o self.food")
-        print("Se self.food > 1, ele reproduz")
+    def check_got_food(self, min_to_reproduce):
+        if self.model.steps + 1 == 10:
+            if self.food >= min_to_reproduce:
+                self.model.init_agent(SpecieAgent)
+                self.food = 0
+            if self.food == 0:
+                self.energy = 0
+
+    def check_got_energy(self):
+        if self.energy == 0:
+            self.model.grid.remove_agent(self)
