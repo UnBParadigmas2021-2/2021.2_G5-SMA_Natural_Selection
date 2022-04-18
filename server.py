@@ -8,9 +8,7 @@ from src.CannibalSpecieAgent import CannibalSpecieAgent
 
 
 def agent_portrayal(agent):
-    # portrayal = {"Shape": "circle", "Filled": "True", "r": 0.5, "Layer": 0}
-    portrayal = { "Filled": "true", "Layer": 0, "w": 1, "h": 1}
-
+    portrayal = {"Filled": "true", "Layer": 0, "w": 1, "h": 1}
     if type(agent) is FoodAgent:
         if not agent.eated:
             portrayal['Shape'] = "assets/food.png"
@@ -22,8 +20,9 @@ def agent_portrayal(agent):
         portrayal['Shape'] = "assets/blob_cannibal.png"
     return portrayal
 
+
 grid = CanvasGrid(agent_portrayal, 10, 10, 500, 500)
 server = ModularServer(FoodSpecieModel, [grid], "Natural Selection", {
-                       "N": 7, "width": 10, "height": 10})
+                       "N": 10, "width": 10, "height": 10})
 server.port = 8081
 server.launch()

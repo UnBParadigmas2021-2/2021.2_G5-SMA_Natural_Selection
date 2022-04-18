@@ -1,7 +1,8 @@
 from mesa import Agent
 
+
 class SpecieAgent(Agent):
-    breed = None # raça do specie
+    breed = None  # raça do specie
     energy = None  # personagem morre quando chega a 0
     grid = None  # matrix com o tabuleiro
     moore = None  # para função de andar
@@ -81,13 +82,13 @@ class SpecieAgent(Agent):
         if self.model.steps + 1 == 10:
             if self.food >= min_to_reproduce:
                 if self.breed == 'Normal':
-                    self.model.init_agent(SpecieAgent)
+                    self.model.init_agent(SpecieAgent, 2)
                 elif self.breed == 'Fast':
                     from src.FastSpecieAgent import FastSpecieAgent
-                    self.model.init_agent(FastSpecieAgent)
+                    self.model.init_agent(FastSpecieAgent, 2)
                 else:
                     from src.CannibalSpecieAgent import CannibalSpecieAgent
-                    self.model.init_agent(CannibalSpecieAgent)
+                    self.model.init_agent(CannibalSpecieAgent, 2)
                 self.food = 0
             if self.food == 0:
                 self.energy = 0
