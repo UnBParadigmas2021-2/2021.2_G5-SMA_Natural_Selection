@@ -21,14 +21,17 @@
 Esse projeto simula um sistema de selecão natural. Tivemos como base esse projeto [aqui](https://www.youtube.com/watch?v=0ZGbIKd0XrM&t=9s&ab_channel=Primer). O programa foi desenvolvido em python utilizando o framework MESA.
 - O projeto consiste na luta de "species" para sobreviver, comer e se reproduzir enquanto competem com outros indivíduos de diferentes características. Os species e a comida são representados por agentes.
 - Dentre os species temos:
-  - Raça "Normal" representado pela imagem:
-<img src="./assets/blob.png" height="50" width="50">
-  - Raça "Rápida" representado pela imagem;
-<img src="./assets/blob_fast.png" height="50" width="50">
-  - Raça "Canibal" representado pela imagem;
-<img src="./assets/blob_cannibal.png" height="50" width="50">
+- Raça "Normal" representado pela imagem:
+<img src="./assets/blob.png" height="50" width="50"/>
+
+- Raça "Rápida" representado pela imagem;
+<img src="./assets/blob_fast.png" height="50" width="50"/>
+
+- Raça "Canibal" representado pela imagem;
+<img src="./assets/blob_cannibal.png" height="50" width="50"/>
+
 - Representando a comida temos a imagem:
-<img src="./assets/food.png" height="50" width="50">
+<img src="./assets/food.png" height="50" width="50"/>
 
 Nas próximas seções é explicado como executar o programa, além de apresentar um vídeo com explicações mais detalhadas sobre o projeto.
 
